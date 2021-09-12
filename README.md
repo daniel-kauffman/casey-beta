@@ -1,1 +1,14 @@
 # casey-beta
+Run *make* to generate the server's hash key and start the server.
+
+# Dependencies
+* coverage  5.1
+* flask     1.1.2
+* gunicorn  20.0.4
+* mypy      0.770
+* pylint    2.5.0
+
+# Test Cases
+All cases must be placed in the corresponding course and assignment directory inside the *cases* directory:
+
+Example: `./cases/101/pset1/cases.py`
