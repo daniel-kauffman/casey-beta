@@ -1,3 +1,5 @@
+This repo contains the most recent stable version of Casey, a submission system for Python files. Please email dkauffma@calpoly.edu with any questions or issues regarding its setup and use.
+
 # casey-beta
 Run *make* to generate the server's hash key and start the server.
 
