@@ -16,7 +16,7 @@ class Sandbox(object):
 
     def __init__(self, calls: Tuple[str, ...], imports: Tuple[str, ...],
                  dirname: str, keep_prompt: bool) -> None:
-        self.ctxmans = (#disable.CallGuard(calls, imports, dirname),
+        self.ctxmans = (disable.CallGuard(calls, imports, dirname),
                         suppress.Suppressor(keep_prompt=keep_prompt),
                         timer.Timer(dirname))
         self.use_disable: bool = True

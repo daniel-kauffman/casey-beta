@@ -38,12 +38,13 @@ class CallGuard(object):
     def __enter__(self) -> "CallGuard":
         """Set all built-ins not whitelisted to None."""
         exc_names = self._get_exc_names()
-#        for name, obj in builtins.__dict__.items():
+        for name, obj in builtins.__dict__.items():
 #            if name == "__import__":
 #                builtins.__dict__[name] = self._import_restricted
 #            elif name not in self.calls and name not in exc_names:
 #                builtins.__dict__[name] = CallGuard.disable_function(name)
-#            elif name == "open":
+            if name == "open":
+                builtins.__dict__[name] = self._open
 #                builtins.__dict__[name] = suspend(self._open)
 #            elif name not in exc_names:
 ##                builtins.__dict__[name] = suspend(obj)
@@ -93,7 +94,7 @@ class CallGuard(object):
         else:
             raise error.ProhibitedFileModeException
         try:
-            return self.builtins.open(path, mode=mode, encoding=encoding)
+            return self.builtins["open"](path, mode=mode, encoding=encoding)
         except FileNotFoundError as e:
             e.filename = filename
             raise e
