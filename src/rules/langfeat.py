@@ -12,8 +12,8 @@ FeatRules = Dict[str, Dict[str, Dict[str, Iterable[int]]]]
 
 def load_features(config: configparser.ConfigParser,
                   paths: Tuple[str, ...]) -> FeatRules:
-    feat_rules = {"calls": {}, "keywords": {}, "imports": {}, "operators": {},
-                  "paradigm": {}, "types": {}}
+    feat_rules = {"calls": {}, "exceptions": {}, "keywords": {}, "imports": {},
+                  "operators": {}, "paradigm": {}, "types": {}}
     for section in config.sections():
         category = section.strip().split(":")[0].lower()
         if any(category.startswith(cat) for cat in feat_rules):

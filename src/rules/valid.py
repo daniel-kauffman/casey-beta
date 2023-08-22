@@ -103,8 +103,9 @@ def _validate_imports(sm: safemod.SafeModule,
 def _validate_function(name: str, root: ast.FunctionDef,
                        feat_rules: langfeat.FeatRules,
                        mod_names: Tuple[str, ...]) -> Dict[str, Set[int]]:
-    errors = _validate_exceptions(root)
+    errors = {}
     parsed = {"calls": defparse.parse_calls(root),
+              "exceptions": defparse.parse_exceptions(root),
               "keywords": defparse.parse_keywords(root),
               "operators": defparse.parse_operators(root),
               "types": defparse.parse_types(root)}
